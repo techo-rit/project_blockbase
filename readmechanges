@@ -1,0 +1,44 @@
+I added an button in the app to update name of the user by adding
+>     function updateName(string memory _newName) public {
+            people[msg.sender].name = _newName;
+        }
+    to the solidity file blockbase.sol
+    >const [newName, setNewName] = useState('');
+    added new state var to hold the updated name 
+>    const updateNameOnChain = async () => {
+      if (!newName.trim()) {
+        alert("Please enter a new name.");
+        return;
+      }
+      try {
+        const tx = await contract.updateName(newName.trim());
+        await tx.wait();
+        setName(newName.trim()); // Update the displayed name in UI
+        setNewName(''); // Reset input
+        alert("Name updated successfully!");
+        await loadPeople(); // Refresh people list
+      } catch (error) {
+        console.error("Error updating name:", error);
+        alert(`Error updating name: ${error.message}`);
+      }
+    };
+    
+    Added a function that calls the smart contract's updateName method
+>added code for the button in the ui 
+
+
+I added another button to Display total registered users by adding
+>added a state to store the user count
+const [userCount, setUserCount] = useState(null);
+>        added a function to fetch the user count
+        const fetchUserCount = async () => {
+          if (!contract) return;
+          try {
+            const addresses = await contract.getAllRegisteredPeople();
+            setUserCount(addresses.length);
+          } catch (error) {
+            console.error("Error fetching user count:", error);
+            setUserCount('Error');
+  }
+};
+>      added a button in the ui
