@@ -1,247 +1,376 @@
-/* Basic Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Base styling and variables */
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --dark-bg: #0f172a;
+  --panel-bg: #1e293b;
+  --card-bg: #334155;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --success: #10b981;
+  --danger: #ef4444;
+  --border: #475569;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .App {
+  text-align: center;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 }
 
-/* Header */
-.App-header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding: 20px;
-  background-color: #1a1a2e;
-  color: white;
-  border-radius: 8px;
-}
-
-.App-header h1 {
-  margin-bottom: 10px;
+/* Typography */
+h1 {
+  color: var(--text);
   font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.App-header p {
-  margin-bottom: 20px;
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem;
+  color: var(--text);
+}
+
+h4 {
   font-size: 1.2rem;
-  opacity: 0.8;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
 }
 
+p {
+  margin: 0.5rem 0;
+  color: var(--text-muted);
+}
+
+/* Buttons and inputs */
 button {
-  background-color: #4d79ff;
+  background-color: var(--primary);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  margin: 0.5rem;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-  background-color: #3366ff;
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Loading */
-.loading {
-  text-align: center;
-  font-size: 1.5rem;
-  margin: 100px 0;
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Create Poll Form */
-.create-poll {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
+input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  margin: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 250px;
+  transition: all 0.2s ease;
 }
 
-.create-poll h2 {
-  margin-bottom: 20px;
-  color: #1a1a2e;
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
 }
 
-.form-group {
-  margin-bottom: 20px;
+input::placeholder {
+  color: var(--text-muted);
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+input[type="number"] {
+  width: 100px;
 }
 
-.form-group input {
+/* Registration form */
+.registration-form {
+  background-color: var(--panel-bg);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  margin-top: 2rem;
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin-bottom: 10px;
+  max-width: 400px;
 }
 
-.option-row {
+/* Container layouts */
+.expense-tracker {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Welcome section and user info */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--panel-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.user-info {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem;
+}
+
+/* Add expense form */
+.add-expense-form {
+  background-color: var(--panel-bg);
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.participant-row {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--card-bg);
 }
 
-.option-row input {
-  flex-grow: 1;
-  margin-right: 10px;
-  margin-bottom: 0;
-}
-
-.add-option {
-  background-color: #28a745;
-  margin-top: 10px;
-}
-
-.remove-option {
-  background-color: #dc3545;
-  padding: 8px 12px;
-}
-
-.create-button {
-  background-color: #4d79ff;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  width: 100%;
-}
-
-/* Polls */
-.polls, .leaderboard {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
-}
-
-.polls h2, .leaderboard h2 {
-  margin-bottom: 20px;
-  color: #1a1a2e;
-}
-
-.polls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.poll-card {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.poll-card h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.poll-meta {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.options {
-  margin-bottom: 20px;
-}
-
-.option {
-  margin-bottom: 15px;
-}
-
-.option-info {
+.form-actions {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  font-size: 0.9rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
 }
 
-.progress-bar {
-  height: 8px;
-  background-color: #ddd;
-  border-radius: 4px;
+/* People table */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1rem 0 2rem;
+  border-radius: 0.5rem;
   overflow: hidden;
-  margin-bottom: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.progress {
-  height: 100%;
-  background-color: #4d79ff;
+thead {
+  background-color: var(--panel-bg);
 }
 
-.vote-button {
-  background-color: #4d79ff;
-  width: 100%;
-  padding: 8px;
-  font-size: 0.9rem;
-}
-
-.voted-message {
-  text-align: center;
-  color: #28a745;
-  font-style: italic;
-}
-
-/* Leaderboard */
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.leaderboard-table th, .leaderboard-table td {
-  padding: 12px 15px;
+th {
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
 }
 
-.leaderboard-table th {
-  background-color: #f1f1f1;
-  font-weight: bold;
+td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text);
 }
 
-.leaderboard-table tr:nth-child(even) {
-  background-color: #f8f9fa;
+tbody tr {
+  background-color: var(--card-bg);
+  transition: background-color 0.2s;
 }
 
-.leaderboard-table tr:hover {
-  background-color: #f1f1f1;
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #666;
+/* Make positive balance green, negative red */
+td[style*="color: green"] {
+  color: var(--success) !important;
+  font-weight: 600;
 }
 
-/* Responsive */
+td[style*="color: red"] {
+  color: var(--danger) !important;
+  font-weight: 600;
+}
+
+/* Expense history items */
+div[style*="border: 1px solid #ddd"] {
+  border: none !important;
+  background-color: var(--panel-bg) !important;
+  border-radius: 1rem !important;
+  margin: 1.5rem 0 !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Expense item tables */
+div[style*="border: 1px solid #ddd"] table {
+  margin: 1rem 0 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+div[style*="border: 1px solid #ddd"] th,
+div[style*="border: 1px solid #ddd"] td {
+  border: none !important;
+  padding: 0.75rem 1rem !important;
+}
+
+div[style*="border: 1px solid #ddd"] th {
+  background-color: var(--card-bg) !important;
+  color: var(--text-muted) !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+}
+
+div[style*="border: 1px solid #ddd"] tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .polls-grid {
-    grid-template-columns: 1fr;
+  .App-header {
+    padding: 1rem 0.5rem;
   }
-  
-  .App-header h1 {
+
+  h1 {
     font-size: 2rem;
   }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50% !important;
+    text-align: right;
+  }
+
+  td:before {
+    position: absolute;
+    left: 1rem;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    content: attr(data-label);
+    color: var(--text-muted);
+  }
+
+  /* Add data-labels for responsive tables */
+  table tr td:nth-of-type(1):before { content: "Name"; }
+  table tr td:nth-of-type(2):before { content: "Address"; }
+  table tr td:nth-of-type(3):before { content: "Net Balance"; }
+
+  .participant-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input {
+    width: calc(100% - 1rem);
+    margin: 0.25rem 0.5rem;
+  }
+}
+
+/* Loader animation */
+p:contains("Loading...") {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+p:contains("Loading...")::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Connect wallet and registration prompts */
+button:first-of-type:only-of-type {
+  background-color: var(--success);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+button:first-of-type:only-of-type:hover {
+  background-color: #0ca678;
 }
